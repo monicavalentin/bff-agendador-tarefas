@@ -5,8 +5,6 @@ import com.mvalentin.bffagendadortarefas.business.dto.EnderecoDto;
 import com.mvalentin.bffagendadortarefas.business.dto.TelefoneDto;
 import com.mvalentin.bffagendadortarefas.business.dto.UsuarioDto;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @FeignClient(name = "usuario", url = "${usuario.url}")

@@ -1,7 +1,7 @@
-package com.mvalentin.bffagendadortarefas.business.dto;
+package com.mvalentin.bffagendadortarefas.business.dto.out;
 
-import com.mvalentin.bffagendadortarefas.business.dto.EnderecoDto;
-import com.mvalentin.bffagendadortarefas.business.dto.TelefoneDto;
+import com.mvalentin.bffagendadortarefas.business.dto.out.EnderecoResponseDto;
+import com.mvalentin.bffagendadortarefas.business.dto.out.TelefoneResponseDto;
 import lombok.*;
 
 import java.util.List;
@@ -11,7 +11,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class UsuarioDto {
+public class UsuarioResponseDto {
 
     private String nome;
     private String email;
@@ -19,6 +19,6 @@ public class UsuarioDto {
     // mas permite que seja recebida em requisições de cadastro (Desserialização).
     //@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)-porém como nossa senha é criptograda então não vamos utilizar
     private String senha;
-    private List<TelefoneDto> telefones;
-    private List<EnderecoDto> enderecos;
+    private List<TelefoneResponseDto> telefones;
+    private List<EnderecoResponseDto> enderecos;
 }

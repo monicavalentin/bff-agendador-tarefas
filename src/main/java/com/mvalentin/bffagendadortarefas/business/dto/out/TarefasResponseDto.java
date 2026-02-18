@@ -1,4 +1,4 @@
-package com.mvalentin.bffagendadortarefas.business.dto;
+package com.mvalentin.bffagendadortarefas.business.dto.out;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.mvalentin.bffagendadortarefas.infrastructure.enums.StatusNotificacaoEnum;
@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class TarefasDto {
+public class TarefasResponseDto {
 
     private String id;
     private String nomeTarefa;

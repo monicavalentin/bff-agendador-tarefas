@@ -7,6 +7,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 
 class BffAgendadorTarefasApplicationTests {
+
 	@Disabled("Desabilitado temporariamente até a configuração do banco de dados no CI")
 	@Test
 	void contextLoads() {

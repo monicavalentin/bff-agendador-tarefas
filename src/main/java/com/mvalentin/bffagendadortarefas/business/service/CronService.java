@@ -51,13 +51,15 @@ public class CronService {
         // 4. Chama o serviço passando o período e o token para autorização
         List<TarefasResponseDto> listaTarefas = tarefasService.buscaTarefasAgendadorPorPeriodo(horaFutura,
                 horaFuturaMaisCinto, token);
-        log.info("Tarefas Encontradas" + listaTarefas);
+        log.info("Tarefas Encontradas: {}", listaTarefas.stream()
+                .map(t -> t.getNomeTarefa())
+                .toList());
 
         listaTarefas.forEach(tarefa ->{ emailService.enviaEmail(tarefa);
             log.info("Notificação enviada para o e-mail do usuário");
             tarefasService.alteraStatus(StatusNotificacaoEnum.NOTIFICADO, tarefa.getId(),
                     token);});
-        log.info("Finalizada busca e notificação de tarefas");
+        log.info("Finalizada busca e envio de notificação de tarefas Pendentes");
     }
 
     public String login (LoginRequestDto dto){
@@ -70,5 +72,4 @@ public class CronService {
                 .senha(senha)
                 .build();
     }
-
 }

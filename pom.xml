@@ -60,13 +60,12 @@
 			<version>2.3.0</version>
 			<scope>compile</scope>
 		</dependency>
-		<!-- Dependência Swagger  openfeign para o método PATCH-->
+		<!-- Dependência feign para resolver problemas com o método PATCH-->
 		<dependency>
 			<groupId>io.github.openfeign</groupId>
 			<artifactId>feign-hc5</artifactId>
 			<scope>compile</scope>
 		</dependency>
-
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>

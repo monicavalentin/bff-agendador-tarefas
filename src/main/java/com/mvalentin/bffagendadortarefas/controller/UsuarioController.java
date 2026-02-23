@@ -7,6 +7,7 @@ import com.mvalentin.bffagendadortarefas.business.dto.out.UsuarioResponseDto;
 import com.mvalentin.bffagendadortarefas.business.dto.in.EnderecoRequestDto;
 import com.mvalentin.bffagendadortarefas.business.dto.in.TelefoneRequestDto;
 import com.mvalentin.bffagendadortarefas.business.dto.in.UsuarioRequestDto;
+import com.mvalentin.bffagendadortarefas.business.dto.out.ViaCepResponseDto;
 import com.mvalentin.bffagendadortarefas.business.service.UsuarioService;
 import com.mvalentin.bffagendadortarefas.infrastructure.security.SecurityConfig;
 import io.swagger.v3.oas.annotations.Operation;
@@ -61,12 +62,11 @@ public class UsuarioController {
                                                                  @RequestHeader(value = "Authorization", required=false) String token){
         return ResponseEntity.ok(usuarioService.cadastraEndereco(token,enderecoDto));
     }
-
+    @PostMapping("/telefone")
     @Operation(summary = "Cadastra telefone", description = "Cadastra telefone de usuários")
     @ApiResponse(responseCode = "401",description="Credenciais inválidas")
     @ApiResponse(responseCode = "200",description="Telefone cadastrado com sucesso")
     @ApiResponse(responseCode = "500",description="Erro de servidor")
-    @PostMapping("/telefone")
     public  ResponseEntity<TelefoneResponseDto> cadastraTelefone(@RequestBody TelefoneRequestDto telefoneDto,
                                                                  @RequestHeader(value = "Authorization", required=false) String token){
         return ResponseEntity.ok(usuarioService.cadastraTelefone(token,telefoneDto));
@@ -128,6 +128,15 @@ public class UsuarioController {
                                                     @RequestHeader(value = "Authorization", required=false) String token){
        usuarioService.deletaUsuarioByEmail(email, token);
        return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/endereco/{cep}")
+    @Operation(summary = "Busca dados de endereco pelo  cep", description = "Busca dados de  endereço recebendo um  cep")
+    @ApiResponse(responseCode = "200", description = "Dadoas de endereço retornado com sucesso")
+    @ApiResponse(responseCode = "400", description = "Cep inválido")
+    @ApiResponse(responseCode = "500", description = "Erro de servidor")
+    public ResponseEntity<ViaCepResponseDto> buscarDadosEnderecoPorCep(@PathVariable("cep") String cep) {
+       return ResponseEntity.ok(usuarioService.buscarDadosEnderecoPorCep(cep));
     }
 
 }
